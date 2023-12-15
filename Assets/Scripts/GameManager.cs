@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     public GameObject player;
 
     public ItemContainer inventoryContainer;
-    public ItemContainer toolbarContainer;
 
     public ItemDragAndDropController dragAndDropController;
 }

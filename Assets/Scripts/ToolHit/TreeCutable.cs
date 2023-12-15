@@ -31,12 +31,10 @@ public class TreeCutable : ToolHit
     {
         GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, .5f);
         GetComponent<SpriteRenderer>().sortingOrder = 2;
-        Debug.Log("On Trigger Enter 2D is working");
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1f);
         GetComponent<SpriteRenderer>().sortingOrder = 1;
-        Debug.Log("On Trigger Exit 2D is working");
     }
 }
