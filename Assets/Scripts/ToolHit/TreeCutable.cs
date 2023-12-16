@@ -5,14 +5,11 @@ using UnityEngine;
 
 public class TreeCutable : ToolHit
 {
-    public GameObject pickUpDrop;
     [SerializeField] int dropCount = 5;
     [SerializeField] float spread = .7f;
 
-    private void Start()
-    {
-        //pickUpDrop = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Plants/wood.prefab", typeof(GameObject));
-    }
+    public GameObject pickUpDrop;
+
     public override void Hit()
     {
         while (dropCount > 0)
@@ -30,7 +27,7 @@ public class TreeCutable : ToolHit
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, .5f);
-        GetComponent<SpriteRenderer>().sortingOrder = 2;
+        GetComponent<SpriteRenderer>().sortingOrder = 4;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

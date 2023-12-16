@@ -4050,7 +4050,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_271
+      name: plowable dirt
       rect:
         serializedVersion: 2
         x: 16
@@ -25511,6 +25511,111 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: seeded 1
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 817
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7732de4a62255a54c918fcaf6e42c7e6
+      internalID: 1743137463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seeded 2
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 801
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18bc17f16ad10dc4e8ee702ad8faa681
+      internalID: -206129888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seeded 3
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 769
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e42fa6fb55a5ddd45ac043fbe27b2588
+      internalID: -1821157164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seeded 4
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 737
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f72b3c3f315e49740b199df6a8b5f4a9
+      internalID: 1043835435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seed
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 288
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f7faa9ab1d49cd409c22eb919f5ae1c
+      internalID: 1524176748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -26350,7 +26455,6 @@ TextureImporter:
       Object_187: -1794682025
       Object_188: -1837711849
       Object_189: -1875330240
-      Object_19: -725910807
       Object_190: -279463154
       Object_191: -1691583086
       Object_192: -1540275536
@@ -26362,7 +26466,6 @@ TextureImporter:
       Object_198: -753489226
       Object_199: -600089673
       Object_2: 104934054
-      Object_20: -1743536168
       Object_200: -241327380
       Object_201: 115687259
       Object_202: -1593701367
@@ -26373,7 +26476,6 @@ TextureImporter:
       Object_207: -1923448207
       Object_208: -1149916735
       Object_209: 589022886
-      Object_21: -211757515
       Object_210: 1486099876
       Object_211: -1524428113
       Object_212: -1121097961
@@ -26384,7 +26486,6 @@ TextureImporter:
       Object_217: -812863739
       Object_218: 1817275373
       Object_219: 1042431281
-      Object_22: 1043835435
       Object_220: 1239639903
       Object_221: 299765033
       Object_222: 1217256427
@@ -26437,7 +26538,6 @@ TextureImporter:
       Object_269: -202011037
       Object_27: 497076972
       Object_270: 2120264632
-      Object_271: -281432639
       Object_272: -1080768747
       Object_273: -608924499
       Object_274: 772449948
@@ -27221,6 +27321,10 @@ TextureImporter:
       Object_997: -363446045
       Object_998: 697494639
       Object_999: 1457376140
+      carrot seeded 1: -725910807
+      carrot seeded 2: -45777787
+      carrot seeded 3: 544964707
+      carrot seeded 4: -785893634
       ocean01: 1465282392
       ocean02: -968730592
       ocean03: -947383677
@@ -27237,6 +27341,12 @@ TextureImporter:
       ocean14: -1911755719
       ocean15: -1789151235
       ocean16: 819829471
+      plowable dirt: -281432639
+      seed: 1524176748
+      seeded 1: 1743137463
+      seeded 2: -1743536168
+      seeded 3: -211757515
+      seeded 4: 1043835435
       waterfall: -938349627
       waterfall in cave 1: -694732470
       waterfall in cave 2: 1632184054

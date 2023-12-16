@@ -5,13 +5,11 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 
-public class TileMapController : MonoBehaviour
+public class TilemapController : MonoBehaviour
 {
     [SerializeField] Tilemap tileMap;
     [SerializeField] List<TileData> tileDatas;
     Dictionary<TileBase, TileData> dataFromTiles;
-
-
 
     private void Start()
     {

@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] ToolbarController toolbar;
     ToolPlayerController tool;
     InventoryControl inventory;
 
-    [SerializeField] public int currentTool = 0;
+    [SerializeField] int currentTool;
 
     private const string _horizontal = "Horizontal";
     private const string _vertical = "Vertical";
@@ -30,8 +31,9 @@ public class PlayerController : MonoBehaviour
         tool = GetComponent<ToolPlayerController>();
         inventory = GetComponent<InventoryControl>();
     }
-    private void FixedUpdate()
+    private void Update()
     {
+        currentTool = toolbar.selectedTool;
         if (inventory.panelInventory.activeInHierarchy == false 
             && inventory.panelPauseGame.activeInHierarchy == false)
         {
@@ -57,8 +59,7 @@ public class PlayerController : MonoBehaviour
                 Attack();
                 Cut();
             }
-            else
-                animator.SetBool("isMoving", false);
+            else { animator.SetBool("isMoving", false); }
         }
         if (facingRight) { transform.localScale = new Vector2(6, 6); }
         else if (!facingRight) { transform.localScale = new Vector2(-6, 6); }
@@ -71,12 +72,7 @@ public class PlayerController : MonoBehaviour
         verticalInput = Input.GetAxis(_vertical);
 
         isJumping = Input.GetKeyDown(KeyCode.Space);
-        leftMouse = Input.GetMouseButtonDown(0);
-
-        //if (Input.GetKeyDown(KeyCode.Alpha1)) { currentTool = 1; }
-        //else if (Input.GetKeyDown(KeyCode.Alpha2)) { currentTool = 2; }
-        //else if (Input.GetKeyDown(KeyCode.Alpha3)) { currentTool = 3; }
-        //else if (Input.GetKeyDown(KeyCode.Alpha4)) { currentTool = 4; }
+        leftMouse = Input.GetKeyDown(KeyCode.Mouse0);
     }
     private void Move()
     {
@@ -94,12 +90,12 @@ public class PlayerController : MonoBehaviour
     }
     private void Attack()
     {
-        if (currentTool == 1 && leftMouse) animator.SetBool("isAttack", true);
+        if (currentTool == 0 && leftMouse) animator.SetBool("isAttack", true);
         else animator.SetBool("isAttack", false);
     }
     private void Cut()
     {
-        if (currentTool == 2 && leftMouse) 
+        if (currentTool == 1 && leftMouse) 
         { 
             animator.SetBool("isCut", true);
             tool.UseTool();
@@ -108,12 +104,20 @@ public class PlayerController : MonoBehaviour
     }
     private void Dig()
     {
-        if (currentTool == 3 && leftMouse) animator.SetBool("isDig", true);
+        tool.SelectedTile();
+        tool.CanSelectCheck();
+        tool.Marker();
+        
+        if (currentTool == 2 && leftMouse)
+        {
+            animator.SetBool("isDig", true);
+            tool.UseToolGrid();
+        } 
         else animator.SetBool("isDig", false);
     }
     private void Watering()
     {
-        if (currentTool == 4 && Input.GetMouseButton(0)) animator.SetBool("isWatering", true);
+        if (currentTool == 3 && Input.GetMouseButton(0)) animator.SetBool("isWatering", true);
         else animator.SetBool("isWatering", false);
     }
 

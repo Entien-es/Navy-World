@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class ItemPanel : MonoBehaviour
 {
-    [SerializeField] ItemContainer inventory;
-    [SerializeField] List<InventoryButton> buttons;
+    public ItemContainer inventory;
+    public List<InventoryButton> buttons;
+
     private void Start()
+    {
+        Init();
+    }
+
+    public void Init()
     {
         SetIndex();
         Show();
@@ -37,4 +43,5 @@ public class ItemPanel : MonoBehaviour
             }
         }
     }
+    public virtual void OnClick(int id) { }
 }

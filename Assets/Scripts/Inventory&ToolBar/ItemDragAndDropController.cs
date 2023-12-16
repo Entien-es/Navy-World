@@ -23,7 +23,7 @@ public class ItemDragAndDropController : MonoBehaviour
         if (itemIcon.activeInHierarchy == true)
         {
             iconTransform.position = Input.mousePosition;
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 if (EventSystem.current.IsPointerOverGameObject() == false)
                 {

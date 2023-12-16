@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class InventoryControl : MonoBehaviour
 {
-    [SerializeField]public GameObject panelInventory;
-    [SerializeField]public GameObject panelPauseGame;
+    [SerializeField] public GameObject panelPauseGame;
+    [SerializeField] public GameObject panelInventory;
+    [SerializeField] public GameObject panelToolbar;
 
     private void Update()
     {
@@ -17,6 +18,8 @@ public class InventoryControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             panelInventory.SetActive(!panelInventory.activeInHierarchy);
+            panelToolbar.SetActive(!panelToolbar.activeInHierarchy);
+
         }
     }
     public void Escape()
@@ -24,10 +27,12 @@ public class InventoryControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && panelInventory.activeInHierarchy == false)
         {
             panelPauseGame.SetActive(!panelPauseGame.activeInHierarchy);
+            panelToolbar.SetActive(!panelToolbar.activeInHierarchy);
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && panelInventory.activeInHierarchy == true) 
-        { 
-            OpenInventory(); 
+        {
+            panelInventory.SetActive(!panelInventory.activeInHierarchy);
+            panelToolbar.SetActive(!panelToolbar.activeInHierarchy);
         }
     }
 }
