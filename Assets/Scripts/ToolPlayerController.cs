@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -28,7 +27,7 @@ public class ToolPlayerController : MonoBehaviour
 
     public void CanSelectCheck()
     {
-        Vector2 playerPos = transform.position;
+        Vector2 playerPos = transform.position + new Vector3(0, 2f);
         Vector2 cam = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         selectable = Vector2.Distance(playerPos, cam) < maxDistance;
         markerManager.Show(selectable);
@@ -46,7 +45,7 @@ public class ToolPlayerController : MonoBehaviour
 
     public bool UseTool()
     {
-        Vector2 pos = rb.position + (Vector2)player.transform.position.normalized + new Vector2(-1, 2f);
+        Vector2 pos = (Vector2)player.transform.position + new Vector2(0f, 2f);
 
         Item item = toolbar.GetItem;
         Debug.Log(item.Name);
@@ -68,7 +67,7 @@ public class ToolPlayerController : MonoBehaviour
                 TileBase tileBase = tilemapController.GetTileBase(selectedTile);
                 TileData tileData = tilemapController.GetTileData(tileBase);
                 if (tileData != plowable) return;
-
+                
                 if (cropsManager.Check((Vector2Int)selectedTile)) { cropsManager.Seed(selectedTile); }
                 else { cropsManager.Plow((Vector2Int)selectedTile); }
             }

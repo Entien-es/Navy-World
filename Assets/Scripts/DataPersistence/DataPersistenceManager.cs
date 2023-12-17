@@ -25,17 +25,17 @@ public class DataPersistenceManager : MonoBehaviour
 
     private Coroutine autoSaveCoroutine;
 
-    public static DataPersistenceManager Instance { get;  private set;}
+    public static DataPersistenceManager instance { get;  private set;}
 
     public void Awake()
     {
-        if (Instance != null)
+        if (instance != null)
         {
             Debug.Log("Found more than one Data Persistence Manager in the scene. Destroying the newest one.");
             Destroy(this.gameObject);
             return;
         }
-        Instance = this;
+        instance = this;
     
             
         if (disableDataPersistence)

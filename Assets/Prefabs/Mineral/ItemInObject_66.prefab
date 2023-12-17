@@ -155,4 +155,4 @@ MonoBehaviour:
   itemCountInOneDrop: 1
   dropCount: 5
   spread: 0.7
-  type: 0
+  type: 2

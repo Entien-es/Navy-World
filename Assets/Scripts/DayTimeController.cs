@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class DayTimeController : MonoBehaviour
 {
-	GameData data;
+	GameData gameData;
 	const float secondsInDay = 86400f;
 	
 	[SerializeField] Color nightLightColor;
@@ -22,7 +22,11 @@ public class DayTimeController : MonoBehaviour
 	[SerializeField] float timeScale = 100f;
 	
 	private int days;
-
+    private void Start()
+    {
+        time = gameData.time;
+		days = gameData.days;
+    }
     private void Update() 
 	{
 		time += Time.deltaTime * timeScale;
@@ -34,7 +38,6 @@ public class DayTimeController : MonoBehaviour
 		globalLight.color = c;
 		if (time > secondsInDay) { NextDay(); }
 	}
-	
 	private void NextDay() 
 	{
 		time = 0;

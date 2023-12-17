@@ -5,13 +5,14 @@ using UnityEngine;
 [System.Serializable]
 public class GameData 
 {
-    public long lastUpdated;
-
-    public float time;
-        
-    public int days;
-
     public Vector3 playerPosition;
+
+    public long lastUpdated;
+    public float time;
+    public int days;
+    public int health;
+    public int xp;
+    public int coin;
 
     public SerializableDictionary<string, bool> itemsCollected;
 
@@ -19,8 +20,11 @@ public class GameData
     {
         this.time = 0.0f;
         this.days = 0;
-        playerPosition = Vector3.zero;
-        itemsCollected = new SerializableDictionary<string, bool>();
+        this.health = 3;
+        this.xp = 0;
+        this.coin = 0;
+        this.playerPosition = Vector3.zero;
+        this.itemsCollected = new SerializableDictionary<string, bool>();
     }
    
 }

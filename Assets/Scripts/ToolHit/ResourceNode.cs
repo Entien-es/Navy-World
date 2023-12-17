@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[RequireComponent(typeof(PolygonCollider2D))]
 public class ResourceNode : ToolHit
 {
     [SerializeField] Item item;
@@ -37,7 +36,6 @@ public class ResourceNode : ToolHit
     }
     public override bool CanBeHit(List<ResourceNodeType> canBeHit)
     {
-        Debug.Log(type);
         return canBeHit.Contains(type);
     }
 }

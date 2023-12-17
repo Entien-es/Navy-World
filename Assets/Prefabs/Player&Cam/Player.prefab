@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toolbar: {fileID: 0}
+  item: {fileID: 0}
   animator: {fileID: 4415299062463016898}
 --- !u!114 &5057111346386521450
 MonoBehaviour:
@@ -229,4 +230,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelPauseGame: {fileID: 6693779491960573273, guid: 7cad6c04de4e40348b30e4444b5dd66f, type: 3}
   panelInventory: {fileID: 144863976604446123, guid: 0d2f38c9fc6685e4493a1011d099a686, type: 3}
-  panelToolbar: {fileID: 0}
+  panelToolbar: {fileID: 5456946152659301727, guid: 1db0489bfb890dd4984166ab3cdd3172, type: 3}
+  menuButton: {fileID: 8770317633716210675, guid: 4b7c8e53f738ce24587f842ff306f004, type: 3}

@@ -151,6 +151,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 937240123a693c94bb23bbdbd113c35f, type: 2}
   itemCountInOneDrop: 1
-  dropCount: 5
+  dropCount: 2
   spread: 0.7
   type: 2
