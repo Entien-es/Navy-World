@@ -34,8 +34,8 @@ MonoBehaviour:
   - item: {fileID: 0}
     count: 0
   - item: {fileID: 11400000, guid: 2c59b4fa6ee34044eb3df13f1564ee7f, type: 2}
-    count: 10000
-  - item: {fileID: 0}
+    count: 165
+  - item: {fileID: 11400000, guid: 43d3b4f2bb6f18c49a041c9025f86cb6, type: 2}
     count: 0
   - item: {fileID: 0}
     count: 0
@@ -67,8 +67,8 @@ MonoBehaviour:
     count: 0
   - item: {fileID: 0}
     count: 0
-  - item: {fileID: 0}
-    count: 0
+  - item: {fileID: 11400000, guid: 2c59b4fa6ee34044eb3df13f1564ee7f, type: 2}
+    count: 10050
   - item: {fileID: 0}
     count: 0
   - item: {fileID: 0}

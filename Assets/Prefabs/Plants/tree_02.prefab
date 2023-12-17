@@ -196,8 +196,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678f4f502c33903489da510a321bb5cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpDrop: {fileID: 6696188179661459578, guid: 94a0b48e956f21a4aaf92646d799ea7d, type: 3}
-  pickSeed: {fileID: 3531379233656324544, guid: ffb1832bf9931a64fbd9b2364c187021, type: 3}
+  item: {fileID: 11400000, guid: 2c59b4fa6ee34044eb3df13f1564ee7f, type: 2}
+  itemCountInOneDrop: 1
   dropCount: 5
-  seedCount: 1
   spread: 0.7
+  type: 1

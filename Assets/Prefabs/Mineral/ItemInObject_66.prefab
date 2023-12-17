@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1679458840292297632}
   - component: {fileID: 288038062091689354}
+  - component: {fileID: 6967344370010143768}
+  - component: {fileID: 4688749099805204668}
   m_Layer: 0
   m_Name: ItemInObject_66
   m_TagString: Untagged
@@ -72,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1646815362, guid: aab443cd344ec0540a8caa869ed8f037, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -84,3 +86,73 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &6967344370010143768
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7882737082452000946}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.625, y: 1.5625}
+    newSize: {x: 1.625, y: 1.5625}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.5, y: 0.78125}
+      - {x: -0.8125, y: 0.40625}
+      - {x: -0.8125, y: -0.40625}
+      - {x: -0.5625, y: -0.78125}
+      - {x: 0.5625, y: -0.78125}
+      - {x: 0.8125, y: -0.40625}
+      - {x: 0.8125, y: 0.34375}
+      - {x: 0.4375, y: 0.78125}
+  m_UseDelaunayMesh: 0
+--- !u!114 &4688749099805204668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7882737082452000946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 678f4f502c33903489da510a321bb5cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 937240123a693c94bb23bbdbd113c35f, type: 2}
+  itemCountInOneDrop: 1
+  dropCount: 5
+  spread: 0.7
+  type: 0

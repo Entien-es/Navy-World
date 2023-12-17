@@ -6,10 +6,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] ToolbarController toolbar;
+    [SerializeField] Item item;
     ToolPlayerController tool;
     InventoryControl inventory;
-
-    [SerializeField] int currentTool;
 
     private const string _horizontal = "Horizontal";
     private const string _vertical = "Vertical";
@@ -25,25 +24,33 @@ public class PlayerController : MonoBehaviour
 
     public Animator animator;
     private Vector3 direction;
+    private SpriteRenderer sprRender;
 
     private void Awake()
     {
         tool = GetComponent<ToolPlayerController>();
         inventory = GetComponent<InventoryControl>();
+        sprRender = GetComponent<SpriteRenderer>();
+        item.Name = "Sword";
     }
     private void Update()
     {
-        currentTool = toolbar.selectedTool;
         if (inventory.panelInventory.activeInHierarchy == false 
             && inventory.panelPauseGame.activeInHierarchy == false)
         {
-            GetInput();
-            Move();
-            Jump();
-            Attack();
-            Cut();
-            Dig();
-            Watering();
+            try
+            {
+                item = toolbar.GetItem;
+                GetInput();
+                Move();
+                Jump();
+                Attack();
+                Cut();
+                Pickaxe();
+                Dig();
+                Watering();
+            }
+            catch { }
         }
     }
 
@@ -56,14 +63,10 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("isMoving", true);
                 animator.SetFloat(_horizontal, direction.x);
                 animator.SetFloat(_vertical, direction.y);
-                Attack();
-                Cut();
             }
             else { animator.SetBool("isMoving", false); }
         }
-        if (facingRight) { transform.localScale = new Vector2(6, 6); }
-        else if (!facingRight) { transform.localScale = new Vector2(-6, 6); }
-
+        sprRender.flipX = !facingRight;
     }
 
     private void GetInput()
@@ -85,22 +88,37 @@ public class PlayerController : MonoBehaviour
     }
     private void Jump()
     {
-        if (isJumping) animator.SetBool("isJumping", true);
+        if (isJumping)
+        {
+            animator.SetBool("isJumping", true);
+        }
         else animator.SetBool("isJumping", false);
     }
     private void Attack()
     {
-        if (currentTool == 0 && leftMouse) animator.SetBool("isAttack", true);
+        if (item.Name == "Sword" && leftMouse)
+        {
+            animator.SetBool("isAttack", true);
+        }
         else animator.SetBool("isAttack", false);
     }
     private void Cut()
     {
-        if (currentTool == 1 && leftMouse) 
+        if (item.Name == "Axe" && leftMouse)
         { 
             animator.SetBool("isCut", true);
             tool.UseTool();
         }
         else animator.SetBool("isCut", false);
+    }
+    private void Pickaxe()
+    {
+        if (item.Name == "Pickaxe" && leftMouse)
+        {
+            animator.SetBool("isMining", true);
+            tool.UseTool();
+        }
+        else animator.SetBool("isMining", false);
     }
     private void Dig()
     {
@@ -108,7 +126,7 @@ public class PlayerController : MonoBehaviour
         tool.CanSelectCheck();
         tool.Marker();
         
-        if (currentTool == 2 && leftMouse)
+        if (item.Name == "Shovel" && leftMouse)
         {
             animator.SetBool("isDig", true);
             tool.UseToolGrid();
@@ -117,7 +135,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Watering()
     {
-        if (currentTool == 3 && Input.GetMouseButton(0)) animator.SetBool("isWatering", true);
+        if (item.Name == "Water" && leftMouse) animator.SetBool("isWatering", true);
         else animator.SetBool("isWatering", false);
     }
 

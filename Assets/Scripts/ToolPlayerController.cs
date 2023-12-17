@@ -9,9 +9,10 @@ public class ToolPlayerController : MonoBehaviour
 {
     [SerializeField] MarkerManager markerManager;
     [SerializeField] TilemapController tilemapController;
-    [SerializeField] float maxDistance = 1.5f;
     [SerializeField] CropsManager cropsManager;
     [SerializeField] TileData plowable;
+    [SerializeField] ToolbarController toolbar;
+    [SerializeField] float maxDistance = 1.5f;
 
     PlayerController player;
     Rigidbody2D rb;
@@ -43,22 +44,19 @@ public class ToolPlayerController : MonoBehaviour
         markerManager.markedCellPosition = selectedTile;
     }
 
-    public void UseTool()
+    public bool UseTool()
     {
-        Vector2 pos = rb.position + (Vector2)player.transform.position.normalized + new Vector2(1, -.5f);
+        Vector2 pos = rb.position + (Vector2)player.transform.position.normalized + new Vector2(-1, 2f);
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(pos, 1f);
+        Item item = toolbar.GetItem;
+        Debug.Log(item.Name);
 
-        foreach (var item in colliders)
-        {
-            ToolHit hit = item.GetComponent<ToolHit>();
-            if (hit != null)
-            {
-                Debug.DrawLine(pos, hit.transform.position, Color.red, 1.5f);
-                hit.Hit();
-                break;
-            }
-        }
+        if (item == null) { return false; }
+        if (item.onAction == null) { return false; }
+
+        bool complete = item.onAction.OnApply(pos);
+
+        return complete;
     }
 
     public void UseToolGrid()
