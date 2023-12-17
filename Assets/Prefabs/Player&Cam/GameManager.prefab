@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1881381448280412236}
   - component: {fileID: 7446794900625483909}
   - component: {fileID: 5123064718734159329}
+  - component: {fileID: 618012203212231519}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -143,7 +144,9 @@ MonoBehaviour:
     m_RotationOrder: 4
   text: {fileID: 0}
   globalLight: {fileID: 3440588182159319131}
+  time: 25200
   timeScale: 100
+  days: 0
 --- !u!114 &7459041865230682582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +221,23 @@ MonoBehaviour:
   plow: {fileID: 11400000, guid: 88fa78a9b23255c44a94a07d9021c7ec, type: 2}
   seed: {fileID: 11400000, guid: fd012374cfcfa0946be9a7e92d03d7aa, type: 2}
   targetTilemap: {fileID: 0}
+--- !u!114 &618012203212231519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5970816321748291308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4bbdc9468f922469a9bb63ae403502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableDataPersistence: 0
+  overrideSelectedProfileId: 0
+  testSelectedProfileId: Debug
+  fileName: SaveGame
+  autoSaveTimeSeconds: 2
 --- !u!1 &7239096914929203884
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,25 +15,16 @@ public class FileDataHandler
     {
         this.dataDirPath = dataDirPath;
         this.dataFileName = dataFileName;
-      
     }
 
-    public GameData Load(string profileId, bool allowRestoreFromBackup = true)
+    public GameData Load()
     {
-        // base case - if the profileId is null, return right away
-        if (profileId == null)
-        {
-            return null;
-        }
-
-        // use Path.Combine to account for different OS's having different path separators
-        string fullPath = Path.Combine(dataDirPath, profileId, dataFileName);
-        GameData loadedData = null;
+        string fullPath = Path.Combine(dataDirPath, dataFileName);
+        GameData loaded = null;
         if (File.Exists(fullPath))
         {
             try
             {
-                // load the serialized data from the file
                 string dataToLoad = "";
                 using (FileStream stream = new FileStream(fullPath, FileMode.Open))
                 {
@@ -42,49 +33,17 @@ public class FileDataHandler
                         dataToLoad = reader.ReadToEnd();
                     }
                 }
-
-                // optionally decrypt the data
-             
-
-                // deserialize the data from Json back into the C# object
-                loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
+                loaded = JsonUtility.FromJson<GameData>(dataToLoad);
             }
-            catch (Exception e)
-            {
-                // since we're calling Load(..) recursively, we need to account for the case where
-                // the rollback succeeds, but data is still failing to load for some other reason,
-                // which without this check may cause an infinite recursion loop.
-                if (allowRestoreFromBackup)
-                {
-                    Debug.LogWarning("Failed to load data file. Attempting to roll back.\n" + e);
-                    bool rollbackSuccess = AttemptRollback(fullPath);
-                    if (rollbackSuccess)
-                    {
-                        // try to load again recursively
-                        loadedData = Load(profileId, false);
-                    }
-                }
-                // if we hit this else block, one possibility is that the backup file is also corrupt
-                else
-                {
-                    Debug.LogError("Error occured when trying to load file at path: "
-                        + fullPath + " and backup did not work.\n" + e);
-                }
-            }
+            catch (Exception e) { Debug.Log("Error occured when trying to load data from file: " + fullPath + "\n" + e); }
         }
-        return loadedData;
+        return loaded;
     }
 
-    public void Save(GameData data, string profileId)
+    public void Save(GameData data)
     {
-        // base case - if the profileId is null, return right away
-        if (profileId == null)
-        {
-            return;
-        }
-
         // use Path.Combine to account for different OS's having different path separators
-        string fullPath = Path.Combine(dataDirPath, profileId, dataFileName);
+        string fullPath = Path.Combine(dataDirPath, dataFileName);
         string backupFilePath = fullPath + backupExtension;
         try
         {
@@ -107,7 +66,7 @@ public class FileDataHandler
             }
 
             // verify the newly saved file can be loaded successfully
-            GameData verifiedGameData = Load(profileId);
+            GameData verifiedGameData = Load();
             // if the data can be verified, back it up
             if (verifiedGameData != null)
             {
@@ -126,15 +85,9 @@ public class FileDataHandler
         }
     }
 
-    public void Delete(string profileId)
+    public void Delete()
     {
-        // base case - if the profileId is null, return right away
-        if (profileId == null)
-        {
-            return;
-        }
-
-        string fullPath = Path.Combine(dataDirPath, profileId, dataFileName);
+        string fullPath = Path.Combine(dataDirPath, dataFileName);
         try
         {
             // ensure the data file exists at this path before deleting the directory
@@ -148,10 +101,9 @@ public class FileDataHandler
                 Debug.LogWarning("Tried to delete profile data, but data was not found at path: " + fullPath);
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
-            Debug.LogError("Failed to delete profile data for profileId: "
-                + profileId + " at path: " + fullPath + "\n" + e);
+            
         }
     }
 
@@ -167,16 +119,16 @@ public class FileDataHandler
 
             // defensive programming - check if the data file exists
             // if it doesn't, then this folder isn't a profile and should be skipped
-            string fullPath = Path.Combine(dataDirPath, profileId, dataFileName);
+            string fullPath = Path.Combine(dataDirPath, dataFileName);
             if (!File.Exists(fullPath))
             {
                 Debug.LogWarning("Skipping directory when loading all profiles because it does not contain data: "
-                    + profileId);
+                    );
                 continue;
             }
 
             // load the game data for this profile and put it in the dictionary
-            GameData profileData = Load(profileId);
+            GameData profileData = Load();
             // defensive programming - ensure the profile data isn't null,
             // because if it is then something went wrong and we should let ourselves know
             if (profileData != null)

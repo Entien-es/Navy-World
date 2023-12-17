@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
-public class DayTimeController : MonoBehaviour
+public class DayTimeController : MonoBehaviour, IDataPersistence
 {
-	GameData gameData;
 	const float secondsInDay = 86400f;
 	
 	[SerializeField] Color nightLightColor;
@@ -16,17 +15,13 @@ public class DayTimeController : MonoBehaviour
 	[SerializeField] Text text;
 	[SerializeField] Light2D globalLight;
 
-	float time = 25200;
+	public float time = 25200;
 	float Hours { get { return time / 3600f; } }
 	float Minutes { get { return time % 3600f / 60f; } }
 	[SerializeField] float timeScale = 100f;
 	
-	private int days;
-    private void Start()
-    {
-        time = gameData.time;
-		days = gameData.days;
-    }
+	public int days;
+
     private void Update() 
 	{
 		time += Time.deltaTime * timeScale;
@@ -42,5 +37,15 @@ public class DayTimeController : MonoBehaviour
 	{
 		time = 0;
 		days += 1;
+	}
+	public void LoadData(GameData data)
+	{
+		time = data.time;
+		days = data.days;
+	}
+	public void SaveData(ref GameData data)
+	{
+		data.time = time;
+		data.days = days;
 	}
 }
