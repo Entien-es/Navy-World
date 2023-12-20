@@ -9,6 +9,7 @@ public class ItemToolbarPanel : ItemPanel
 
     private void Start()
     {
+        inventory = (ItemContainer)Resources.InstanceIDToObject(29304);
         Init();
         toolbarController.onChange += Highlight;
         Highlight(0);

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class DayTimeController : MonoBehaviour, IDataPersistence
 {
 	const float secondsInDay = 86400f;
-	const float phaseLenght = 300f;
+	const float phaseLenght = 43200f;
 
 	[SerializeField] Color nightLightColor;
 	[SerializeField] Color dayLightColor = Color.white;
@@ -19,8 +19,7 @@ public class DayTimeController : MonoBehaviour, IDataPersistence
 	List<TimeAgent> agents;
 
 	[SerializeField] float timeScale = 100f;
-	[SerializeField] float startAtTime = 25200f;
-	public float time = 0;
+	public float time = 25200f;
 	public int days;
 	int oldPhase = 0;
 
@@ -30,10 +29,6 @@ public class DayTimeController : MonoBehaviour, IDataPersistence
     private void Awake()
     {
         agents = new List<TimeAgent>();
-    }
-    private void Start()
-    {
-		time = startAtTime;
     }
     private void Update()
     {

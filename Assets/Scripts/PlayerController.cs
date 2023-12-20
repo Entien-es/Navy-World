@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     }
 
     [Obsolete]
-    private void Update()
+    private void FixedUpdate()
     {
         if (inventory.panelInventory.activeInHierarchy == false 
             && inventory.panelPauseGame.activeInHierarchy == false)

@@ -32,8 +32,8 @@ Transform:
   m_GameObject: {fileID: 18883868251691666}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.5517626, y: -2.9260235, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -170,7 +170,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0047149844, y: -0.059998624}
+  m_Offset: {x: 0.00034458563, y: -0.06873942}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -181,7 +181,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.102662705, y: 0.1596948}
+  m_Size: {x: 0.09042557, y: 0.16319112}
   m_EdgeRadius: 0
 --- !u!114 &4979692984625271429
 MonoBehaviour:
@@ -212,8 +212,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   markerManager: {fileID: 0}
   tilemapController: {fileID: 0}
-  cropsManager: {fileID: 0}
-  plowable: {fileID: 11400000, guid: f97fa577456e8a3499e02f3923f17a8c, type: 2}
   toolbar: {fileID: 0}
   maxDistance: 1.5
 --- !u!114 &5805510089474505735

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
@@ -14,7 +15,7 @@ public class GameData
     public int xp;
     public int coin;
 
-    public SerializableDictionary<string, bool> itemsCollected;
+    public SerializableDictionary<string, ItemContainer> itemsCollected;
 
     public GameData()
     {
@@ -24,7 +25,6 @@ public class GameData
         this.xp = 0;
         this.coin = 0;
         this.playerPosition = Vector3.zero;
-        this.itemsCollected = new SerializableDictionary<string, bool>();
+        this.itemsCollected = new SerializableDictionary<string, ItemContainer>();
     }
-   
 }

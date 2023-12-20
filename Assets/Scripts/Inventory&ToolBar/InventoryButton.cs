@@ -10,7 +10,6 @@ public class InventoryButton : MonoBehaviour, IPointerClickHandler
     [SerializeField] Image icon;
     [SerializeField] Image highlight;
     [SerializeField] Text text;
-
     int myIndex;
 
     public void SetIndex(int index)

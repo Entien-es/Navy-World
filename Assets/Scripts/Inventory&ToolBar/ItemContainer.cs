@@ -29,9 +29,8 @@ public class ItemSlot
 }
 [CreateAssetMenuAttribute(menuName = "Data/Item Container")]
 public class ItemContainer : ScriptableObject
-{    
+{
     public List<ItemSlot> slots;
-
     public void Add(Item item, int count = 1)
     {
         if(item.stackable == true)
