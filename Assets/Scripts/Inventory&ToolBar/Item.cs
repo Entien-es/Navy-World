@@ -9,4 +9,8 @@ public class Item : ScriptableObject
     public string Name;
     public bool stackable;
     public Sprite icon;
+    public ToolAction onAction;
+    public ToolAction onTilemapAction;
+    public ToolAction onItemUsed;
+    public Crop crop;
 }

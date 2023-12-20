@@ -195,7 +195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78be5cf2d0c7bc94fbf001d6501791ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentTool: 0
+  toolbar: {fileID: 0}
+  item: {fileID: 0}
   animator: {fileID: 4415299062463016898}
 --- !u!114 &5057111346386521450
 MonoBehaviour:
@@ -209,6 +210,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b97912a8d78edc4c926fa83d8b31774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  markerManager: {fileID: 0}
+  tilemapController: {fileID: 0}
+  cropsManager: {fileID: 0}
+  plowable: {fileID: 11400000, guid: f97fa577456e8a3499e02f3923f17a8c, type: 2}
+  toolbar: {fileID: 0}
+  maxDistance: 1.5
 --- !u!114 &5805510089474505735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,5 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad771b90303903468135c72c1de7c24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelInventory: {fileID: 144863976604446123, guid: 0d2f38c9fc6685e4493a1011d099a686, type: 3}
   panelPauseGame: {fileID: 6693779491960573273, guid: 7cad6c04de4e40348b30e4444b5dd66f, type: 3}
+  panelInventory: {fileID: 144863976604446123, guid: 0d2f38c9fc6685e4493a1011d099a686, type: 3}
+  panelToolbar: {fileID: 5456946152659301727, guid: 1db0489bfb890dd4984166ab3cdd3172, type: 3}
+  menuButton: {fileID: 8770317633716210675, guid: 4b7c8e53f738ce24587f842ff306f004, type: 3}

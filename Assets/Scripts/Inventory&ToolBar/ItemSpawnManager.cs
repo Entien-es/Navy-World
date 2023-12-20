@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ItemSpawnManager : MonoBehaviour
 {
+    [SerializeField] GameObject pickUpItemPrefabs;
     public static ItemSpawnManager instance;
 
     private void Awake()
@@ -11,8 +12,6 @@ public class ItemSpawnManager : MonoBehaviour
         instance = this;
     }
 
-    [SerializeField] GameObject pickUpItemPrefabs;
-    
     public void SpawnItem(Vector3 position, Item item, int count)
     {
         GameObject obj = Instantiate(pickUpItemPrefabs, position, Quaternion.identity);

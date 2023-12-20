@@ -4,30 +4,40 @@ using UnityEngine;
 
 public class InventoryControl : MonoBehaviour
 {
-    [SerializeField]public GameObject panelInventory;
-    [SerializeField]public GameObject panelPauseGame;
+    [SerializeField] public GameObject panelPauseGame;
+    [SerializeField] public GameObject panelInventory;
+    [SerializeField] public GameObject panelToolbar;
+    [SerializeField] GameObject menuButton;
+
+    private bool openInventory;
+    private bool openMenu;
 
     private void Update()
     {
+        GetInput();
         OpenInventory();
-        Escape();
+        OpenMenu();
+    }
+
+    private void GetInput()
+    {
+        openInventory = Input.GetKeyDown(KeyCode.I);
+        openMenu = Input.GetKeyDown(KeyCode.Escape);
     }
     public void OpenInventory()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (openInventory)
         {
             panelInventory.SetActive(!panelInventory.activeInHierarchy);
+            panelToolbar.SetActive(!panelToolbar.activeInHierarchy);
         }
     }
-    public void Escape()
+    public void OpenMenu()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && panelInventory.activeInHierarchy == false)
+        if (openMenu) 
         {
             panelPauseGame.SetActive(!panelPauseGame.activeInHierarchy);
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape) && panelInventory.activeInHierarchy == true) 
-        { 
-            OpenInventory(); 
+            menuButton.SetActive(!menuButton.activeInHierarchy);
         }
     }
 }

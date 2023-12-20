@@ -24,18 +24,24 @@ public class PickupItem : MonoBehaviour
 
         if (ttl < 0) { Destroy(gameObject); }
 
-        float distance = Vector2.Distance(transform.position, player.position);
+        float distance = Vector2.Distance(transform.position, player.position + new Vector3(0f, 1f));
         if (distance > pickUpDistance)
         {
             return;
         }
-        transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards
+            (
+            transform.position, 
+            player.position + new Vector3(0f, 2f),
+            speed * Time.deltaTime
+            );
 
         if (distance < .1f)
         {
             if (GameManager.instance.inventoryContainer != null)
             {
                 GameManager.instance.inventoryContainer.Add(item, count);
+                Debug.Log(item.Name);
             }
             Destroy(gameObject);
         }
