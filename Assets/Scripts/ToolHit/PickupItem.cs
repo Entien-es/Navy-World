@@ -35,7 +35,7 @@ public class PickupItem : MonoBehaviour
             player.position + new Vector3(0f, 2f),
             speed * Time.deltaTime
             );
-        if (distance < 1f)
+        if (distance < 1.1f)
         {
             if (GameManager.instance.inventoryContainer != null)
             {
