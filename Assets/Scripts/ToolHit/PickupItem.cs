@@ -6,8 +6,8 @@ public class PickupItem : MonoBehaviour
 {
     Transform player;
 
-    [SerializeField] float speed = 5f;
-    [SerializeField] float pickUpDistance = 1.5f;
+    [SerializeField] float speed = 3f;
+    [SerializeField] float pickUpDistance = 2f;
     [SerializeField] float ttl = 10f;
 
     public Item item;
@@ -35,13 +35,11 @@ public class PickupItem : MonoBehaviour
             player.position + new Vector3(0f, 2f),
             speed * Time.deltaTime
             );
-
-        if (distance < .1f)
+        if (distance < 1f)
         {
             if (GameManager.instance.inventoryContainer != null)
             {
                 GameManager.instance.inventoryContainer.Add(item, count);
-                Debug.Log(item.Name);
             }
             Destroy(gameObject);
         }

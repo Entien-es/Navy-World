@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour
                 Pickaxe();
                 Dig();
                 Watering();
+                inventory.panelToolbar.active = false;
+                inventory.panelToolbar.active = true;
             }
             catch { }
         }
@@ -154,9 +156,7 @@ public class PlayerController : MonoBehaviour
         if (item.Name == "Seeds" && leftMouse)
         {
             animator.SetBool("doSomething", true);
-            inventory.panelToolbar.active = false;
             tool.UseToolGrid();
-            inventory.panelToolbar.active = true;
         }
         else animator.SetBool("doSomething", false);
     }
