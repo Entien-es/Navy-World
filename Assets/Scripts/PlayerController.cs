@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private bool facingRight;
     private bool leftMouse;
     private bool isMoving;
+    private bool isDash;
     private bool isJumping;
 
     public Animator animator;
@@ -33,6 +34,8 @@ public class PlayerController : MonoBehaviour
         sprRender = GetComponent<SpriteRenderer>();
         item.Name = "Sword";
     }
+
+    [Obsolete]
     private void Update()
     {
         if (inventory.panelInventory.activeInHierarchy == false 
@@ -43,6 +46,7 @@ public class PlayerController : MonoBehaviour
                 item = toolbar.GetItem;
                 GetInput();
                 Move();
+                Dash();
                 Jump();
                 Attack();
                 Cut();
@@ -53,7 +57,6 @@ public class PlayerController : MonoBehaviour
             catch { }
         }
     }
-
     private void AnimateMovement(Vector3 direction)
     {
         if (animator != null)
@@ -74,6 +77,7 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxis(_horizontal);
         verticalInput = Input.GetAxis(_vertical);
 
+        isDash = Input.GetKey(KeyCode.LeftShift);
         isJumping = Input.GetKeyDown(KeyCode.Space);
         leftMouse = Input.GetKeyDown(KeyCode.Mouse0);
     }
@@ -85,6 +89,19 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetAxisRaw(_horizontal) > 0.5) { facingRight = true; }
         if (Input.GetAxisRaw(_horizontal) < -0.5) { facingRight = false; }
+    }
+    private void Dash()
+    {
+        if (isDash)
+        {
+            speed = 4;
+            animator.SetBool("isDash", true);
+        }
+        else 
+        { 
+            speed = 2;
+            animator.SetBool("isDash", false); 
+        }
     }
     private void Jump()
     {
@@ -120,18 +137,28 @@ public class PlayerController : MonoBehaviour
         }
         else animator.SetBool("isMining", false);
     }
+
+    [Obsolete]
     private void Dig()
     {
         tool.SelectedTile();
         tool.CanSelectCheck();
         tool.Marker();
-        
-        if (item.Name == "Shovel" && leftMouse)
+
+        if (item.Name == "Plow" && leftMouse)
         {
             animator.SetBool("isDig", true);
             tool.UseToolGrid();
         } 
         else animator.SetBool("isDig", false);
+        if (item.Name == "Seeds" && leftMouse)
+        {
+            animator.SetBool("doSomething", true);
+            inventory.panelToolbar.active = false;
+            tool.UseToolGrid();
+            inventory.panelToolbar.active = true;
+        }
+        else animator.SetBool("doSomething", false);
     }
     private void Watering()
     {

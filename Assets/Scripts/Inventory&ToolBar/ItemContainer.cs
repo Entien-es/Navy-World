@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [Serializable]
@@ -59,5 +60,28 @@ public class ItemContainer : ScriptableObject
             }
         }
     }
-       
+    public void Remove(Item item, int count = 1)
+    {
+        if (item.stackable)
+        {
+            ItemSlot itemSlot = slots.Find(x => x.item == item);
+            if(itemSlot == null) { return; }
+
+            itemSlot.count -= count;
+            if (itemSlot.count <= 0)
+            {
+                itemSlot.Clear();
+            }
+        }
+        else
+        {
+            while (count > 0) 
+            {
+                count -= 1;
+                ItemSlot itemSlot = slots.Find(x => x.item == item);
+                if (itemSlot == null) { break; };
+                itemSlot.Clear();
+            }
+        }
+    }  
 }

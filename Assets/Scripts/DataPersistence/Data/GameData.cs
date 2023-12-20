@@ -18,7 +18,7 @@ public class GameData
 
     public GameData()
     {
-        this.time = 0.0f;
+        this.time = 25200.0f;
         this.days = 0;
         this.health = 3;
         this.xp = 0;

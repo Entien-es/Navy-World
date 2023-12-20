@@ -11,7 +11,7 @@ public class ToolbarController : MonoBehaviour
     public Action<int> onChange;
     public PlayerController player;
 
-    public int selectedTool;
+    private int selectedTool;
 
     public Item GetItem
     {

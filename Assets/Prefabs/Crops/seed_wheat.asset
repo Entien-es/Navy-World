@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2676e3947dc20b4cb11807308289c0d, type: 3}
   m_Name: seed_wheat
   m_EditorClassIdentifier: 
-  Name: Seed Wheat
+  Name: Seeds
   stackable: 1
   icon: {fileID: 21300000, guid: d3e58325aceab91438a0dc9a2c30bb7e, type: 3}
+  onAction: {fileID: 0}
+  onTilemapAction: {fileID: 11400000, guid: 71bf8299ad8bab3408ecc36779d4ee2d, type: 2}
+  onItemUsed: {fileID: 11400000, guid: 71bf8299ad8bab3408ecc36779d4ee2d, type: 2}
