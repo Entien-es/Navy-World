@@ -6,7 +6,7 @@ public class InventoryControl : MonoBehaviour
 {
     [SerializeField] public GameObject panelPauseGame;
     [SerializeField] public GameObject panelInventory;
-    [SerializeField] GameObject panelToolbar;
+    [SerializeField] public GameObject panelToolbar;
     [SerializeField] GameObject menuButton;
 
     private bool openInventory;

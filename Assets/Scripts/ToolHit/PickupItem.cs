@@ -41,6 +41,7 @@ public class PickupItem : MonoBehaviour
             if (GameManager.instance.inventoryContainer != null)
             {
                 GameManager.instance.inventoryContainer.Add(item, count);
+                Debug.Log(item.Name);
             }
             Destroy(gameObject);
         }

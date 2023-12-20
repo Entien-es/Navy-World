@@ -7,22 +7,9 @@ using UnityEngine.UIElements;
 
 public class TilemapController : MonoBehaviour
 {
+    public CropsManager cropsManager;
+
     [SerializeField] Tilemap tileMap;
-    [SerializeField] List<TileData> tileDatas;
-    Dictionary<TileBase, TileData> dataFromTiles;
-
-    private void Start()
-    {
-        dataFromTiles = new Dictionary<TileBase, TileData>();
-
-        foreach (var tileData in tileDatas)
-        {
-            foreach (var tile in tileData.tiles)
-            {
-                dataFromTiles.Add(tile, tileData);
-            }
-        }
-    }
 
     public Vector3Int GetGridPos(Vector2 position, bool mousePosition)
     {
@@ -44,12 +31,11 @@ public class TilemapController : MonoBehaviour
     public TileBase GetTileBase(Vector3Int gridPos)
     {
         TileBase tile = tileMap.GetTile(gridPos);
-        Debug.Log("tile in pos = " + gridPos + " is " + tile);
+        if (tile != null)
+            Debug.Log("Tile in position: " + gridPos + " is " + tile);
+        else
+            Debug.LogWarning("Not found tile in position: " + gridPos);
 
         return tile;
-    }
-    public TileData GetTileData(TileBase tileBase)
-    {
-        return dataFromTiles[tileBase];
     }
 }

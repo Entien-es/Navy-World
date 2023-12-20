@@ -8,8 +8,7 @@ public class GameManager : MonoBehaviour
     private void Awake() { instance = this; }
 
     public GameObject player;
-
     public ItemContainer inventoryContainer;
-
     public ItemDragAndDropController dragAndDropController;
+    public DayTimeController dayTimeController;
 }

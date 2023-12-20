@@ -6,7 +6,16 @@ public class ToolAction : ScriptableObject
 {
     public virtual bool OnApply(Vector2 worldPoint)
     {
-        Debug.Log("OnApply is not implemented");
+        Debug.LogWarning("OnApply is not implemented");
         return true;
+    }
+    public virtual bool OnApplyToTilemap(Vector3Int grid, TilemapController tilemap, Item item)
+    {
+        Debug.LogWarning("OnApplyToTilemap is not implemented");
+        return true;
+    }
+    public virtual void OnItemUsed(Item item, ItemContainer inventory) 
+    {
+
     }
 }
