@@ -10,7 +10,6 @@ public class ItemToolbarPanel : ItemPanel
     private void Start()
     {
         inventory = Resources.Load<ItemContainer>("Data/Inventory");
-        Debug.LogWarning("Toolbar Load: " + inventory.GetInstanceID());
         Init();
         toolbarController.onChange += Highlight;
         Highlight(0);

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDataPersistence
 {
     [SerializeField] ToolbarController toolbar;
     [SerializeField] Item item;
@@ -26,6 +26,20 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     private Vector3 direction;
     private SpriteRenderer sprRender;
+
+    [SerializeField] AudioSource playerSrc;
+    [SerializeField] AudioSource playerSFX;
+
+    public AudioClip move;
+    public AudioClip dash;
+    public AudioClip jump;
+
+    public AudioClip attack;
+    public AudioClip axe;
+    public AudioClip dig;
+    public AudioClip seed;
+    public AudioClip pickaxe;
+    public AudioClip watering;
 
     private void Awake()
     {
@@ -68,6 +82,7 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("isMoving", true);
                 animator.SetFloat(_horizontal, direction.x);
                 animator.SetFloat(_vertical, direction.y);
+                SRC(playerSrc, move);
             }
             else { animator.SetBool("isMoving", false); }
         }
@@ -88,7 +103,6 @@ public class PlayerController : MonoBehaviour
         direction = new Vector3(horizontalInput, verticalInput);
         AnimateMovement(direction);
         transform.position += direction * speed * Time.deltaTime;
-
         if (Input.GetAxisRaw(_horizontal) > 0.5) { facingRight = true; }
         if (Input.GetAxisRaw(_horizontal) < -0.5) { facingRight = false; }
     }
@@ -98,6 +112,7 @@ public class PlayerController : MonoBehaviour
         {
             speed = 4;
             animator.SetBool("isDash", true);
+            SRC(playerSrc, dash);
         }
         else 
         { 
@@ -110,6 +125,7 @@ public class PlayerController : MonoBehaviour
         if (isJumping)
         {
             animator.SetBool("isJumping", true);
+            SRC(playerSrc, jump);
         }
         else animator.SetBool("isJumping", false);
     }
@@ -118,6 +134,7 @@ public class PlayerController : MonoBehaviour
         if (item.Name == "Sword" && leftMouse)
         {
             animator.SetBool("isAttack", true);
+            SFX(playerSFX, attack);
         }
         else animator.SetBool("isAttack", false);
     }
@@ -127,6 +144,7 @@ public class PlayerController : MonoBehaviour
         { 
             animator.SetBool("isCut", true);
             tool.UseTool();
+            SFX(playerSFX, axe);
         }
         else animator.SetBool("isCut", false);
     }
@@ -136,6 +154,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isMining", true);
             tool.UseTool();
+            SFX(playerSFX, pickaxe);
         }
         else animator.SetBool("isMining", false);
     }
@@ -151,19 +170,46 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isDig", true);
             tool.UseToolGrid();
+            SFX(playerSFX, dig);
         } 
         else animator.SetBool("isDig", false);
         if (item.Name == "Seeds" && leftMouse)
         {
             animator.SetBool("doSomething", true);
             tool.UseToolGrid();
+            SFX(playerSFX, seed);
         }
         else animator.SetBool("doSomething", false);
     }
     private void Watering()
     {
-        if (item.Name == "Water" && leftMouse) animator.SetBool("isWatering", true);
-        else animator.SetBool("isWatering", false);
+        if (item.Name == "Water" && leftMouse)
+        {
+            animator.SetBool("isWatering", true);
+            SFX(playerSFX, watering);
+        }
+        else
+        {
+            animator.SetBool("isWatering", false);
+        }
+    }
+    private void SRC(AudioSource src, AudioClip clip)
+    {
+        src.clip = clip;
+        if (!src.isPlaying) { src.PlayOneShot(clip); }
+    }
+    private void SFX(AudioSource src, AudioClip clip)
+    {
+        src.clip = clip;
+        if (!src.isPlaying) { src.PlayOneShot(clip); }
+    }
+    public void LoadData(GameData data)
+    {
+        transform.position = data.playerPosition;
     }
 
+    public void SaveData(ref GameData data)
+    {
+        data.playerPosition = transform.position;
+    }
 }

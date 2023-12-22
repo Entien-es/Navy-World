@@ -7,7 +7,6 @@ public class InventoryPanel : ItemPanel
     private void Start()
     {
         inventory = Resources.Load<ItemContainer>("Data/Inventory");
-        Debug.LogWarning("Inventory ID: " + inventory.GetInstanceID());
     }
     public override void OnClick(int id)
     {
