@@ -9,11 +9,11 @@ public class ItemToolbarPanel : ItemPanel
 
     private void Start()
     {
+        inventory = Resources.Load<ItemContainer>("Data/Inventory");
         Init();
         toolbarController.onChange += Highlight;
         Highlight(0);
     }
-
     public override void OnClick(int id)
     {
         toolbarController.Set(id);

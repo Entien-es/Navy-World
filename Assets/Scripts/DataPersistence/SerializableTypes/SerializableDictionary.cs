@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,5 +39,4 @@ public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IS
             this.Add(keys[i], values[i]);
         }
     }
-
 }

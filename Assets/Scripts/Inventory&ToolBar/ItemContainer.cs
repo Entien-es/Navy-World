@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 [Serializable]
@@ -26,10 +27,12 @@ public class ItemSlot
         item = null;
         count = 0;
     }
+
 }
+
 [CreateAssetMenuAttribute(menuName = "Data/Item Container")]
 public class ItemContainer : ScriptableObject
-{    
+{
     public List<ItemSlot> slots;
 
     public void Add(Item item, int count = 1)
@@ -83,5 +86,5 @@ public class ItemContainer : ScriptableObject
                 itemSlot.Clear();
             }
         }
-    }  
+    }
 }

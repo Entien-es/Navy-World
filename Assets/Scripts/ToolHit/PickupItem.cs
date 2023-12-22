@@ -24,7 +24,7 @@ public class PickupItem : MonoBehaviour
 
         if (ttl < 0) { Destroy(gameObject); }
 
-        float distance = Vector2.Distance(transform.position, player.position + new Vector3(0f, 1f));
+        float distance = Vector2.Distance(transform.position, player.position + new Vector3(0f, 2f));
         if (distance > pickUpDistance)
         {
             return;
@@ -35,12 +35,11 @@ public class PickupItem : MonoBehaviour
             player.position + new Vector3(0f, 2f),
             speed * Time.deltaTime
             );
-        if (distance < 1.1f)
+        if (distance < 0.1f)
         {
             if (GameManager.instance.inventoryContainer != null)
             {
                 GameManager.instance.inventoryContainer.Add(item, count);
-                Debug.Log(item.Name);
             }
             Destroy(gameObject);
         }

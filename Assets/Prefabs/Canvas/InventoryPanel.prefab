@@ -223,6 +223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7666308454319144700}
   - component: {fileID: 5267494922282181956}
+  - component: {fileID: 7821895221367428595}
   m_Layer: 5
   m_Name: InventoryPanel
   m_TagString: Untagged
@@ -260,6 +261,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144863976604446123}
   m_CullTransparentMesh: 1
+--- !u!114 &7821895221367428595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144863976604446123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 4099e190fbdf572418bcf33920bc82a3, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &344118316203584947
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,8 +1018,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2860244503151696446}
-  - component: {fileID: 1524667339968269086}
-  - component: {fileID: 3882122298193670657}
   - component: {fileID: 7952742451756078453}
   - component: {fileID: 8448062165073180709}
   m_Layer: 5
@@ -1053,44 +1082,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1524667339968269086
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 443539926072327640}
-  m_CullTransparentMesh: 1
---- !u!114 &3882122298193670657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 443539926072327640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4099e190fbdf572418bcf33920bc82a3, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!114 &7952742451756078453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1129,6 +1120,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: f3122942eea4b4345b2deda7269058dd, type: 2}
   buttons:
+  - {fileID: 3339033069895454556}
+  - {fileID: 4418733161749285601}
+  - {fileID: 7477261824201097160}
+  - {fileID: 8562667187660149353}
+  - {fileID: 5980089743207986978}
+  - {fileID: 5133210809926612856}
+  - {fileID: 9185532884275368054}
+  - {fileID: 6162193620342821248}
+  - {fileID: 7470701637779154945}
   - {fileID: 4351121115140839237}
   - {fileID: 3912221956943053478}
   - {fileID: 6734708860811356935}
@@ -1156,15 +1156,7 @@ MonoBehaviour:
   - {fileID: 2314944575161184380}
   - {fileID: 3247675882976916734}
   - {fileID: 8360507085700852329}
-  - {fileID: 3339033069895454556}
-  - {fileID: 4418733161749285601}
-  - {fileID: 7477261824201097160}
-  - {fileID: 8562667187660149353}
-  - {fileID: 5980089743207986978}
-  - {fileID: 5133210809926612856}
-  - {fileID: 9185532884275368054}
-  - {fileID: 6162193620342821248}
-  - {fileID: 7470701637779154945}
+  idKey: 6046a891-6085-4bff-ad43-108115106a15
 --- !u!1 &463588303409929771
 GameObject:
   m_ObjectHideFlags: 0
