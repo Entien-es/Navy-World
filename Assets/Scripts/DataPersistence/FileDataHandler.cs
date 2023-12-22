@@ -9,7 +9,6 @@ public class FileDataHandler
     private string dataDirPath = "";
     private string dataFileName = "";
     private readonly string encryptionCodeWord = "word";
-    private readonly string backupExtension = ".bak";
 
     public FileDataHandler(string dataDirPath, string dataFileName)
     {
@@ -44,7 +43,6 @@ public class FileDataHandler
     {
         // use Path.Combine to account for different OS's having different path separators
         string fullPath = Path.Combine(dataDirPath, dataFileName);
-        string backupFilePath = fullPath + backupExtension;
         try
         {
             // create the directory the file will be written to if it doesn't already exist
@@ -67,17 +65,6 @@ public class FileDataHandler
 
             // verify the newly saved file can be loaded successfully
             GameData verifiedGameData = Load();
-            // if the data can be verified, back it up
-            if (verifiedGameData != null)
-            {
-                File.Copy(fullPath, backupFilePath, true);
-            }
-            // otherwise, something went wrong and we should throw an exception
-            else
-            {
-                throw new Exception("Save file could not be verified and backup could not be created.");
-            }
-
         }
         catch (Exception e)
         {
@@ -189,33 +176,5 @@ public class FileDataHandler
             modifiedData += (char)(data[i] ^ encryptionCodeWord[i % encryptionCodeWord.Length]);
         }
         return modifiedData;
-    }
-
-    private bool AttemptRollback(string fullPath)
-    {
-        bool success = false;
-        string backupFilePath = fullPath + backupExtension;
-        try
-        {
-            // if the file exists, attempt to roll back to it by overwriting the original file
-            if (File.Exists(backupFilePath))
-            {
-                File.Copy(backupFilePath, fullPath, true);
-                success = true;
-                Debug.LogWarning("Had to roll back to backup file at: " + backupFilePath);
-            }
-            // otherwise, we don't yet have a backup file - so there's nothing to roll back to
-            else
-            {
-                throw new Exception("Tried to roll back, but no backup file exists to roll back to.");
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.LogError("Error occured when trying to roll back to backup file at: "
-                + backupFilePath + "\n" + e);
-        }
-
-        return success;
     }
 }

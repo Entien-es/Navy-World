@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class InventoryPanel : ItemPanel
 {
-    private void OnEnable()
+    private void Start()
     {
-        inventory = (ItemContainer)Resources.InstanceIDToObject(29304);
-        Debug.LogWarning(inventory.GetInstanceID());
-        Init();
+        inventory = Resources.Load<ItemContainer>("Data/Inventory");
+        Debug.LogWarning("Inventory ID: " + inventory.GetInstanceID());
     }
     public override void OnClick(int id)
     {

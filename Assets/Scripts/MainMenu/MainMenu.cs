@@ -5,9 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame() {
+    public DataPersistenceManager manager;
+    public void PlayGame() 
+    {
+        DataPersistenceManager.instance.NewGame();
         SceneManager.LoadSceneAsync(1);
     }
-    public void BackToMenu() { SceneManager.LoadSceneAsync(0);  }
-    public void Exit() { Application.Quit();  }   
+    public void ContinueGame()
+    {
+        SceneManager.LoadSceneAsync(1);
+    }
+    public void BackToMenu() 
+    {
+        DataPersistenceManager.instance.SaveGame();
+        SceneManager.LoadSceneAsync(0);  
+    }
+    public void Exit() 
+    {
+        DataPersistenceManager.instance.SaveGame();
+        Application.Quit();  
+    }   
 }

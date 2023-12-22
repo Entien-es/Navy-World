@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f96b595c84126a4f846d0de8af47db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 618012203212231519}
 --- !u!114 &8816109629935268301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,7 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: SaveGame
-  autoSaveTimeSeconds: 2
+  autoSaveTimeSeconds: 3
 --- !u!1 &7239096914929203884
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,7 +26,9 @@ public class ItemSlot
         item = null;
         count = 0;
     }
+
 }
+
 [CreateAssetMenuAttribute(menuName = "Data/Item Container")]
 public class ItemContainer : ScriptableObject
 {
@@ -82,5 +84,5 @@ public class ItemContainer : ScriptableObject
                 itemSlot.Clear();
             }
         }
-    }  
+    }
 }

@@ -9,12 +9,12 @@ public class ItemToolbarPanel : ItemPanel
 
     private void Start()
     {
-        inventory = (ItemContainer)Resources.InstanceIDToObject(29304);
+        inventory = Resources.Load<ItemContainer>("Data/Inventory");
+        Debug.LogWarning("Toolbar Load: " + inventory.GetInstanceID());
         Init();
         toolbarController.onChange += Highlight;
         Highlight(0);
     }
-
     public override void OnClick(int id)
     {
         toolbarController.Set(id);
